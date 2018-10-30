@@ -1,0 +1,13 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /stores/{store} {
+      allow read, write: if false;
+    }
+    match /warifs/{warif} {
+    	allow read, write: if false;
+    }
+    match /warifs {
+    	allow read, write: if false;
+    }
+  }
+}
