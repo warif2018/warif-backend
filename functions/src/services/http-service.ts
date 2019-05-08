@@ -94,11 +94,11 @@ export class HttpService {
     /**
      * postMenuByRestraunt
      */
-    public postMenuByRestraunt(restrauntId: string, menu: Menu, res) {
+    public async postMenuByRestraunt(restrauntId: string, menu: Menu, res) {
         menu.restrauntId = restrauntId;
         
         try {
-            admin.firestore().collection('menus').add(menu);
+            await admin.firestore().collection('menus').add(menu);
             res.send({status: 'ok'});
         } catch(e) {
             res.status(400);
@@ -109,7 +109,7 @@ export class HttpService {
     /**
      * postMenusByRestraunt
      */
-    public postMenusByRestraunt(restrauntId: string, menus: Menu[], res) {
+    public async postMenusByRestraunt(restrauntId: string, menus: Menu[], res) {
         menus.map((item: Menu) => {
             item.restrauntId = restrauntId;
             return item;
@@ -117,7 +117,7 @@ export class HttpService {
         
         try {
             for (const menu of menus) {
-                admin.firestore().collection('menus').add(menu);
+                await admin.firestore().collection('menus').add(menu);
             }
             res.send({status: 'ok'});
         } catch(e) {
@@ -129,9 +129,9 @@ export class HttpService {
     /**
      * postRestraunt
      */
-    public postRestraunt(restraunt: Restraunt, res) {
+    public async postRestraunt(restraunt: Restraunt, res) {
         try {
-            admin.firestore().collection('restraunts').add(restraunt);
+            await admin.firestore().collection('restraunts').add(restraunt);
             res.send({status: 'ok'});
         } catch(e) {
             res.status(400);
@@ -142,10 +142,10 @@ export class HttpService {
     /**
      * postRestraunts
      */
-    public postRestraunts(restraunts: Restraunt[], res) {
+    public async postRestraunts(restraunts: Restraunt[], res) {
         try {
             for (const restraunt of restraunts) {
-                admin.firestore().collection('restraunts').add(restraunt);
+                await admin.firestore().collection('restraunts').add(restraunt);
             }
             res.send({status: 'ok'});
         } catch(e) {
@@ -157,9 +157,9 @@ export class HttpService {
     /**
      * postUser
      */
-    public postUser(user: User, res) {
+    public async postUser(user: User, res) {
         try {
-            admin.firestore().collection('users').add(user);
+            await admin.firestore().collection('users').add(user);
             res.send({status: 'ok'});
         } catch(e) {
             res.status(400);
@@ -170,9 +170,9 @@ export class HttpService {
     /**
      * postReligion
      */
-    public postReligion(religion: Religion, res) {
+    public async postReligion(religion: Religion, res) {
         try {
-            admin.firestore().collection('religions').add(religion);
+            await admin.firestore().collection('religions').add(religion);
             res.send({status: 'ok'});
         } catch(e) {
             res.status(400);
@@ -183,10 +183,10 @@ export class HttpService {
     /**
      * postReligions
      */
-    public postReligions(religions: Religion[], res) {
+    public async postReligions(religions: Religion[], res) {
         try {
             for (const religion of religions) {
-                admin.firestore().collection('religions').add(religion);
+                await admin.firestore().collection('religions').add(religion);
             }
             res.send({status: 'ok'});
         } catch(e) {
@@ -198,9 +198,9 @@ export class HttpService {
     /**
      * postIngredient
      */
-    public postIngredient(ingredient: Ingredient, res) {
+    public async postIngredient(ingredient: Ingredient, res) {
         try {
-            admin.firestore().collection('ingredients').add(ingredient);
+            await admin.firestore().collection('ingredients').add(ingredient);
             res.send({status: 'ok'});
         } catch(e) {
             res.status(400);
@@ -211,10 +211,10 @@ export class HttpService {
     /**
      * postIngredients
      */
-    public postIngredients(ingredients: Ingredient[], res) {
+    public async postIngredients(ingredients: Ingredient[], res) {
         try {
             for (const ingredient of ingredients) {
-                admin.firestore().collection('ingredients').add(ingredient);
+                await admin.firestore().collection('ingredients').add(ingredient);
             }
             res.send({status: 'ok'});
         } catch(e) {
