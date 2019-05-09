@@ -1,3 +1,9 @@
 export class Menu {
-    restrauntId: string
+    name: string;
+    description: string;
+    restrauntId: string;
+    price: string;
+    photoes: string[];
+    categories: number[];
+    
 }
