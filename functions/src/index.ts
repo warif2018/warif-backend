@@ -63,5 +63,9 @@ app.delete('/ingredient/:ingredientId/', (req, res) => res.send(req.params.id));
 
 exports.warif = functions.https.onRequest(app);
 exports.auth = functions.https.onCall((data, context) => {
+    // context.authにいろいろ入ってるので使う（下記）
+    // ログインしてない場合はcontext.auth === undefined
+    // ほか使えそうなのはcontext.headersぐらいかも
+    // return {ok: 'ok'}
     return { auth: context.auth };
 });
