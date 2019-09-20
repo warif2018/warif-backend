@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:8
-    # working_directory: ~/functions
+    working_directory: ~/functions
     steps:
       - checkout
       - run: npm install
